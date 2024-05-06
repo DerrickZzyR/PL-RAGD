@@ -7,6 +7,7 @@ ibi3 = cell(num_label,1);
 bi3 = zeros(num_label,1);
 
 for j = 1:num_label
+    fprintf('label = %d\n', j)
     pos_num = sum(label(j,:) == 1);
     neg_num = sum(label(j,:) == 0); %label == -1
     pos_idx = find(label(j,:) == 1);
@@ -28,13 +29,13 @@ for j = 1:num_label
     temp_num2 = zeros(1, pos_num);
 
     for i = 1:pos_num
-        temp_num = size(intersect(knn_idx(i,:), neg_idx), 1);
+        temp_num = size(intersect(knn_idx(i,:), neg_idx), 2);
         temp_num2(i) = temp_num;
         p2(i) = temp_num / k;
         p2old(i) = p2(i);
         if p2(i) == 1 % 近邻全为负样本
-%             fprintf('第%d个样本的近邻全为负样本\n',i)
-            dd = pdist2(pos_data(i,:), pos_data);
+            fprintf('第%d个样本的近邻全为负样本\n',i)
+            dd = pdist2(pos_data(i,:), data);
             [~, sort_idx] = sort(dd);
             nearest_pos = find(label(sort_idx) == 1); % 找出距离样本i最近的正样本下标
             p2(i) = (nearest_pos(1) -1) / nearest_pos(1);
