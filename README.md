@@ -1,5 +1,7 @@
 ### Addressing bayes imbalance in partial label learning via range adaptive graph guided disambiguation[J]. Neurocomputing, 2025.
 
+Address the bayes imbalance (imbalanced distribution) in graph disambiguation strategies.
+
 Matlab Implementation
 
 How to start?
